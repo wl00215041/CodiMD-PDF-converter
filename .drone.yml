@@ -1,0 +1,21 @@
+kind: pipeline
+name: default
+
+steps:
+- name: Build Image
+  image: plugins/docker
+  settings:
+    registry: dhub.promise.com.tw:5000
+    repo: dhub.promise.com.tw:5000/applications/codimd_convert
+    insecure: true
+    username: cibot
+    password: Promise123!
+    dockerfile: Dockerfile
+
+- name: Line Notify
+  image: appleboy/drone-line
+  settings:
+    channel_secret: cd7614ad206999ea0c04e9b07726ac90
+    channel_token: jZBrOrguiHyCk8bFyQpPZy6iX5AxLZiR5DS92bQThh/KKS/eKzA9xvKZIElRANeI8OM+Esr+2hJc2mr9r5Nt/OPOjf64Cs5mNQ3nPqUTq4J1W/KlIpb4QL3asj7Oy3sLQbvkqmlAQSh3V8lVkmwZBAdB04t89/1O/w1cDnyilFU=
+    to: U9cedeb21fa7a7dca29bad0615506b611
+
